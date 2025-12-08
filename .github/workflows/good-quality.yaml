@@ -13,36 +13,40 @@ jobs:
 
   check-linter:
     name: check-linter
-    uses: ./.github/workflows/set-up.yaml
+    runs-on: ubuntu-latest
 
     steps:
       - name: check-linter
+      - uses: ./.github/actions
         run: uv run ruff check .
         shell: bash
 
   check-formatter:
     name: check-formatter
-    uses: ./.github/workflows/set-up.yaml
+    runs-on: ubuntu-latest
 
     steps:
       - name: check-formatter
+      - uses: ./.github/actions
         run: uv run ruff format --check .
         shell: bash
 
   check-type-safety:
     name: check-formatter
-    uses: ./.github/workflows/set-up.yaml
+    runs-on: ubuntu-latest
 
     steps:
       - name: check-type-safety
+      - uses: ./.github/actions
         run: uv run pyright
         shell: bash
 
   run-unit-test:
     name: run-unit-test
-    uses: ./.github/workflows/set-up.yaml
+    runs-on: ubuntu-latest
 
     steps:
       - name: run-unit-test
+      - uses: ./.github/actions
         run: uv run pytest
         shell: bash
