@@ -12,9 +12,9 @@ on: [push, pull_request]
 jobs:
 
   check-linter:
-    uses: ./.github/workflows/set-up.yaml
     name: check-linter
     runs-on: ubuntu-latest
+    uses: ./.github/workflows/set-up.yaml
 
     steps:
       - name: check-linter
@@ -22,9 +22,9 @@ jobs:
         shell: bash
 
   check-formatter:
-    uses: ./.github/workflows/set-up.yaml
     name: check-formatter
     runs-on: ubuntu-latest
+    uses: ./.github/workflows/set-up.yaml
 
     steps:
       - name: check-formatter
@@ -32,9 +32,9 @@ jobs:
         shell: bash
 
   check-type-safety:
-    uses: ./.github/workflows/set-up.yaml
     name: check-formatter
     runs-on: ubuntu-latest
+    uses: ./.github/workflows/set-up.yaml
 
     steps:
       - name: check-type-safety
@@ -42,9 +42,9 @@ jobs:
         shell: bash
 
   run-unit-test:
-    uses: ./.github/workflows/set-up.yaml
     name: run-unit-test
     runs-on: ubuntu-latest
+    uses: ./.github/workflows/set-up.yaml
 
     steps:
       - name: run-unit-test
