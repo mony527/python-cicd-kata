@@ -58,7 +58,7 @@ jobs:
         shell: bash
 
   check-type-safety:
-    name: check-formatter
+    name: check-type-safety
     runs-on: ubuntu-latest
 
     steps:
