@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: check-linter
       - uses: ./.github/actions
-        run: uv run ruff check .
+      - run: uv run ruff check .
         shell: bash
 
   check-formatter:
@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: check-formatter
       - uses: ./.github/actions
-        run: uv run ruff format --check .
+      - run: uv run ruff format --check .
         shell: bash
 
   check-type-safety:
@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: check-type-safety
       - uses: ./.github/actions
-        run: uv run pyright
+      - run: uv run pyright
         shell: bash
 
   run-unit-test:
@@ -48,5 +48,5 @@ jobs:
     steps:
       - name: run-unit-test
       - uses: ./.github/actions
-        run: uv run pytest
+      - run: uv run pytest
         shell: bash
