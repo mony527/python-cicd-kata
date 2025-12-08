@@ -1,19 +1,17 @@
 name: Good quality
 run-name: ${{ github.actor }} is checking good quality 🔎
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
+  #push:
+    #branches:
+      #- main
+  #pull_request:
+    #branches:
+      #- main
 
 jobs:
-
-  check-linter:
-    name: check-linter
+  setup-config:
+    name: setup-config
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v5
 
@@ -29,6 +27,12 @@ jobs:
         run: uv sync --all-extras --dev
         shell: bash
 
+  check-linter:
+    name: check-linter
+    needs: setup-config
+    runs-on: ubuntu-latest
+
+    steps:
       - name: check-linter
         run: uv run ruff check .
         shell: bash
