@@ -17,7 +17,20 @@ jobs:
 
     steps:
       - name: check-linter
-      - uses: ./.github/actions
+      - uses: actions/checkout@v5
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+        shell: bash
+
       - run: uv run ruff check .
         shell: bash
 
@@ -27,7 +40,20 @@ jobs:
 
     steps:
       - name: check-formatter
-      - uses: ./.github/actions
+      - uses: actions/checkout@v5
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+        shell: bash
+
       - run: uv run ruff format --check .
         shell: bash
 
@@ -37,7 +63,20 @@ jobs:
 
     steps:
       - name: check-type-safety
-      - uses: ./.github/actions
+      - uses: actions/checkout@v5
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+        shell: bash
+
       - run: uv run pyright
         shell: bash
 
@@ -47,6 +86,19 @@ jobs:
 
     steps:
       - name: run-unit-test
-      - uses: ./.github/actions
+      - uses: actions/checkout@v5
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+        shell: bash
+
       - run: uv run pytest
         shell: bash
