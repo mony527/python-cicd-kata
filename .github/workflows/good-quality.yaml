@@ -13,7 +13,6 @@ jobs:
 
   check-linter:
     name: check-linter
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/set-up.yaml
 
     steps:
@@ -23,7 +22,6 @@ jobs:
 
   check-formatter:
     name: check-formatter
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/set-up.yaml
 
     steps:
@@ -33,7 +31,6 @@ jobs:
 
   check-type-safety:
     name: check-formatter
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/set-up.yaml
 
     steps:
@@ -43,7 +40,6 @@ jobs:
 
   run-unit-test:
     name: run-unit-test
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/set-up.yaml
 
     steps:
