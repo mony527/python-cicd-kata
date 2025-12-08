@@ -9,9 +9,11 @@ on:
       - main
 
 jobs:
-  setup-config:
-    name: setup-config
+
+  check-linter:
+    name: check-linter
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v5
 
@@ -27,12 +29,6 @@ jobs:
         run: uv sync --all-extras --dev
         shell: bash
 
-  check-linter:
-    name: check-linter
-    needs: setup-config
-    runs-on: ubuntu-latest
-
-    steps:
       - name: check-linter
         run: uv run ruff check .
         shell: bash
