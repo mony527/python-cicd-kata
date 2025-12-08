@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: check-linter
-      - run: uv run ruff check .
+        run: uv run ruff check .
         shell: bash
 
   check-formatter:
