@@ -29,7 +29,7 @@ jobs:
 
   check-linter:
     name: check-linter
-    needs: setup-config
+    needs: setup
     runs-on: ubuntu-latest
 
     steps:
