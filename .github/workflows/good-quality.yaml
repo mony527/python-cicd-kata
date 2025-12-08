@@ -10,8 +10,8 @@ on: [push, pull_request]
       #- main
 
 jobs:
-  uv-checking-good-quality:
-    name: good-quality
+  check-linter:
+    name: check-linter
     runs-on: ubuntu-latest
 
     steps:
@@ -33,14 +33,28 @@ jobs:
         run: uv run ruff check .
         shell: bash
 
+  check-formatter:
+    name: check-formatter
+    runs-on: ubuntu-latest
+
+    steps:
       - name: check-formatter
         run: uv run ruff format --check .
         shell: bash
 
+  check-type-safety:
+    name: check-formatter
+    runs-on: ubuntu-latest
+
+    steps:
       - name: check-type-safety
         run: uv run pyright
         shell: bash
+  run-unit.test:
+    name: run-unit-test
+    runs-on: ubuntu-latest
 
+    steps:
       - name: run-unit-test
         run: uv run pytest
         shell: bash
