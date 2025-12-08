@@ -18,8 +18,8 @@ repos:
 
   - repo: local
     hooks:
-      - id: pytest
-        name: Run pytest
+      - id: pytest tests
+        name: Run pytest tests
         entry: uv run pytest
         language: system
         types: [python]
