@@ -1,12 +1,15 @@
 name: Good quality
 run-name: ${{ github.actor }} is checking good quality 🔎
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
 
 jobs:
-  uv-example:
+  uv-checking-good-quality:
     name: python
     runs-on: ubuntu-latest
 
@@ -25,7 +28,18 @@ jobs:
         run: uv sync --all-extras --dev
         shell: bash
 
-      - name: Run unit test
-        run: uv run pytest
+      - name: check-linter
+        run: uv run ruff check .
         shell: bash
 
+      - name: check-formatter
+        run: uv run ruff format --check .
+        shell: bash
+
+      - name: check-type-safety
+        run: uv run pyrigth
+        shell: bash
+
+      - name: run-unit-test
+        run: uv run pytest
+        shell: bash
