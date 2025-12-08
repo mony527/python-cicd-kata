@@ -5,6 +5,8 @@ repos:
       - id: ruff-check
         args: [--fix]
       - id: ruff-format
+      - id: ruff-format
+        args: [--check]
 
   - repo: local
     hooks:
