@@ -50,7 +50,8 @@ jobs:
       - name: check-type-safety
         run: uv run pyright
         shell: bash
-  run-unit.test:
+
+  run-unit-test:
     name: run-unit-test
     runs-on: ubuntu-latest
 
