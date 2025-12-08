@@ -11,7 +11,7 @@ on: [push, pull_request]
 
 jobs:
   uv-checking-good-quality:
-    name: python
+    name: good-quality
     runs-on: ubuntu-latest
 
     steps:
@@ -38,7 +38,7 @@ jobs:
         shell: bash
 
       - name: check-type-safety
-        run: uv run pyrigth
+        run: uv run pyright
         shell: bash
 
       - name: run-unit-test
