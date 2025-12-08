@@ -10,30 +10,19 @@ on: [push, pull_request]
       #- main
 
 jobs:
+
   check-linter:
+    uses: ./.github/workflows/set-up.yaml
     name: check-linter
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
-
-      - name: "Set up Python"
-        uses: actions/setup-python@v6
-        with:
-          python-version-file: ".python-version"
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v7
-
-      - name: Install the project
-        run: uv sync --all-extras --dev
-        shell: bash
-
       - name: check-linter
         run: uv run ruff check .
         shell: bash
 
   check-formatter:
+    uses: ./.github/workflows/set-up.yaml
     name: check-formatter
     runs-on: ubuntu-latest
 
@@ -43,6 +32,7 @@ jobs:
         shell: bash
 
   check-type-safety:
+    uses: ./.github/workflows/set-up.yaml
     name: check-formatter
     runs-on: ubuntu-latest
 
@@ -52,6 +42,7 @@ jobs:
         shell: bash
 
   run-unit-test:
+    uses: ./.github/workflows/set-up.yaml
     name: run-unit-test
     runs-on: ubuntu-latest
 
