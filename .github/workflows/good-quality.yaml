@@ -1,0 +1,103 @@
+name: Good quality
+run-name: ${{ github.actor }} is checking good quality 🔎
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  check-linter:
+    name: check-linter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check-linter
+        uses: actions/checkout@v5
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+        shell: bash
+
+      - run: uv run ruff check .
+        shell: bash
+
+  check-formatter:
+    name: check-formatter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check-formatter
+        uses: actions/checkout@v5
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+        shell: bash
+
+      - run: uv run ruff format --check .
+        shell: bash
+
+  check-type-safety:
+    name: check-type-safety
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check-type-safety
+        uses: actions/checkout@v5
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+        shell: bash
+
+      - run: uv run pyright
+        shell: bash
+
+  run-unit-test:
+    name: run-unit-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: run-unit-test
+        uses: actions/checkout@v5
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+        shell: bash
+
+      - run: uv run pytest
+        shell: bash
