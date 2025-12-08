@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  setup:
+  setup-config:
     name: setup-config
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +29,7 @@ jobs:
 
   check-linter:
     name: check-linter
-    needs: setup
+    needs: setup-config
     runs-on: ubuntu-latest
 
     steps:
